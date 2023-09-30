@@ -147,7 +147,7 @@ const softDeleteProduct = async (request: Request, response: Response) => {
 };
 
 
-router.get("/:searchTerm", getProducts);
+router.get("/", getProducts);
 router.get("/:id", getProduct);
 router.post("/", createProduct);
 router.put("/:id", updateProduct); // Add the new PUT endpoint for updating a product
