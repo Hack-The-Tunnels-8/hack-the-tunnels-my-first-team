@@ -1,4 +1,12 @@
 .page {
   // TODO: update height
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Helvetica;
+  background-color: #1f1f1f;
+  color: #fff;
 }
+
