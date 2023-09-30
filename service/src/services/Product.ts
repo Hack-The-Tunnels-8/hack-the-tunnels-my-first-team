@@ -1,3 +1,4 @@
+//service/src/services/Product.ts
 import { Product } from "@prisma/client";
 import { prisma } from "../infrastructure/db";
 
@@ -38,4 +39,22 @@ export const create = async (
   });
 
   return newProduct;
+};
+
+export const update = async (
+  id: string,
+  data: Partial<Product>
+): Promise<Product | null> => {
+  try {
+    const product = await prisma.product.update({
+      where: { id: parseInt(id) },
+      data: {
+        ...data,
+      },
+    });
+
+    return product;
+  } catch (error) {
+    return null; // Product not found or error occurred during update
+  }
 };

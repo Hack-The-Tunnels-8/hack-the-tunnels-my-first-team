@@ -1,3 +1,4 @@
+//service/src/infrastructure/api/routes/products.ts
 import express, { Request, Response } from "express";
 import { ProductService } from "../../../services";
 import { success, error, verifyAuthorization } from "../utils";
@@ -60,8 +61,49 @@ const createProduct = async (request: Request, response: Response) => {
   });
 };
 
+const updateProduct = async (request: Request, response: Response) => {
+  // Verify user authorization (admin only)
+  const authorization = await verifyAuthorization(
+    request.headers.authorization
+  );
+
+  if (authorization.err) {
+    return error(response, {
+      error: authorization.val.message,
+      statusCode: 401,
+    });
+  }
+
+  const id = request.params.id;
+  const updatedData = request.body;
+
+  try {
+    const updatedProduct = await ProductService.update(id, updatedData);
+
+    if (!updatedProduct) {
+      return error(response, {
+        error: "Product not found.",
+        statusCode: 404,
+      });
+    }
+
+    return success(response, {
+      data: {
+        product: updatedProduct,
+      },
+      statusCode: 200,
+    });
+  } catch (error) {
+    return error(response, {
+      error: "Error updating product.",
+      statusCode: 500,
+    });
+  }
+};
+
 router.get("/", getProducts);
 router.get("/:id", getProduct);
 router.post("/", createProduct);
+router.put("/:id", updateProduct); // Add the new PUT endpoint for updating a product
 
 export default router;

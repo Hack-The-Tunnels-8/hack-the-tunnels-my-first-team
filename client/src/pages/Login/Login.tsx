@@ -4,10 +4,13 @@ import { Page } from "../../components";
 import { useAccountContext } from "../../context";
 import "./Login.style.scss";
 
+
 function Login() {
   const [message, setMessage] = useState(null);
   const { loggedIn, login } = useAccountContext();
   const navigate = useNavigate();
+  
+
 
   const attemptLogin = async () => {
     try {
@@ -15,6 +18,7 @@ function Login() {
       setMessage(message);
     } catch (error) {
       console.log(error);
+
     }
   };
 
@@ -28,8 +32,15 @@ function Login() {
     <Page>
       <div className="login-page">
         <h1>Login</h1>
+        <p>Email: </p>
+        <input type="email"></input>
+        <p>Password: </p>
+        <input type="password"></input>
+
+
+
         <button onClick={() => attemptLogin()}>
-          Login (as user set in code)
+          Login
         </button>
         {message && <p>{message}</p>}
       </div>
