@@ -1,0 +1,40 @@
+.column1 {
+        flex: 40%;
+        padding: 10px;
+        width: 30%;
+    }
+
+.column2 {
+        flex: 60%;
+        padding: 10px;
+    }
+
+.productImage {
+    width: 100%;
+}
+
+.product-page__product {
+    display: flex;
+}
+
+.product_title{
+    padding-left: 10px;
+}
+
+.buy_button{
+    font-size: 30px;
+    font-family: Helvetica;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid black;
+    background-color: rgb(236, 185, 126);
+}
+
+.buy_button:hover{
+    background-color: #1f1f1f;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
