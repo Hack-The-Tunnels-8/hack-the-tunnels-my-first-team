@@ -38,3 +38,17 @@
     cursor: pointer;
     transition-duration: 0.3s;
 }
+
+.product-page__product{
+    display: flex;
+    flex-direction: row;
+}
+
+@media (max-width: 900px) {
+    .column1, .column2 {
+        flex: 100%;
+    }
+    .product-page__product{
+        flex-direction: column;
+    }
+}
