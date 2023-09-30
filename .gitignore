@@ -2,3 +2,4 @@
 dev.db
 service/src/infrastructure/db/dev.db
 *.app.github.dev
+.history
