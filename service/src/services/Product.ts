@@ -23,13 +23,6 @@ export const findMany = async (ids: string[]): Promise<Product[]> => {
   return products;
 };
 
-export const search = async (searchTerm: string): Promise<Product[]> => {
-  const result = await prisma.product.findMany({
-    where: { title: { equals: searchTerm, },},
-  })
-  return result;
-};
-
 export const create = async (
   title: string,
   description: string,
