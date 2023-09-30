@@ -9,6 +9,7 @@ function Login() {
   const { loggedIn, login } = useAccountContext();
   const navigate = useNavigate();
 
+
   const attemptLogin = async () => {
     try {
       const message = await login("admin@email.com", "password");
@@ -30,6 +31,9 @@ function Login() {
         <h1>Login</h1>
         <button onClick={() => attemptLogin()}>
           Login (as user set in code)
+        <input type="Email: "></input>
+        <input type="Password: "></input>
+
         </button>
         {message && <p>{message}</p>}
       </div>
