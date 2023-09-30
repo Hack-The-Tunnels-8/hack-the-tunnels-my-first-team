@@ -26,3 +26,13 @@
     opacity: 1;
   }
 }
+
+.home-page__products {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.product {
+  margin: 10px;
+}
