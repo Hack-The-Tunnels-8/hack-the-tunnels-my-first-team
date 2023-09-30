@@ -8,8 +8,10 @@
 }
 
 .navbar_logo {
-  margin-left: 50px;
+  margin-left: 100px;
   width: 70px;
+  animation-name: logo;
+  animation-duration: 1s;
 }
 
 .sign_up {
@@ -53,5 +55,16 @@
   display: flex;
   align-items: center;
   margin-right: 50px;
+}
+
+@keyframes logo {
+  0%{
+    margin-left: 1070px;
+    opacity: 0;
+  }
+  100%{
+    margin-left: 100px;
+    opacity: 1;
+  }
 }
 

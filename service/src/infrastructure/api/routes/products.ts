@@ -25,6 +25,11 @@ const getProduct = async (request: Request, response: Response) => {
       error: "Product not found.",
       statusCode: 404,
     });
+  } else if (product.deleted) {
+    return error(response, {
+      error: "Product is deleted.",
+      statusCode: 404, // You can use a different status code if desired
+    });
   }
 
   return success(response, {
@@ -101,9 +106,51 @@ const updateProduct = async (request: Request, response: Response) => {
   }
 };
 
-router.get("/", getProducts);
+const softDeleteProduct = async (request: Request, response: Response) => {
+  // Extract product ID from the URL parameters
+  const id = request.params.id;
+
+  const authorization = await verifyAuthorization(
+    request.headers.authorization,
+  );
+
+  if (authorization.err) {
+    return error(response, {
+      error: authorization.val.message,
+      statusCode: 401,
+    });
+  }
+
+  try {
+    // Use ProductService to soft delete the product by setting the 'deleted' flag to true
+    const updatedProduct = await ProductService.softDeleteProduct(id);
+
+    if (!updatedProduct) {
+      return error(response, {
+        error: "Product not found.",
+        statusCode: 404,
+      });
+    }
+
+    return success(response, {
+      data: {
+        product: updatedProduct,
+      },
+      statusCode: 200,
+    });
+  } catch (error) {
+    return error(response, {
+      error: "Error soft deleting product.",
+      statusCode: 500,
+    });
+  }
+};
+
+
+router.get("/:searchTerm", getProducts);
 router.get("/:id", getProduct);
 router.post("/", createProduct);
 router.put("/:id", updateProduct); // Add the new PUT endpoint for updating a product
+router.delete("/:id", softDeleteProduct);
 
 export default router;

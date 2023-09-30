@@ -1,6 +1,8 @@
 .home-page {
   &__title {
-    color: red;
+    color: white;
+    animation-name: title;
+    animation-duration: 1s;
   }
 
   &__products {
@@ -11,5 +13,16 @@
       text-decoration: none;
       color: inherit;
     }
+  }
+}
+
+@keyframes title {
+  0%{
+    margin-left: 1000px;
+    opacity: 0;
+  }
+  100%{
+    margin-left: 0px;
+    opacity: 1;
   }
 }
