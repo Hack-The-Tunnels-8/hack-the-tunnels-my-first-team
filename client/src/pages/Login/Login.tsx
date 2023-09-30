@@ -13,7 +13,7 @@ function Login() {
 
   const attemptLogin = async () => {
     try {
-      const message = await login(email, password);
+      const message = await login("email", "password");
       setMessage(message);
 
       // Check if login was successful
