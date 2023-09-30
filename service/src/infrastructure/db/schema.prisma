@@ -18,12 +18,21 @@ model Product {
   imageUrl    String?
   lineItems   LineItem[]
   deleted     Boolean    @default(false)
+  reviews     Reviews[]
+}
+
+model Reviews {
+  product      Product  @relation(fields: [productId], references: [id])
+  productId    Int
+  id           Int      @id @default(autoincrement())
+  text         String
+  rating       Int
 }
 
 model Order {
-  id         Int        @id @default(autoincrement())
   customer   Customer   @relation(fields: [customerId], references: [id])
   customerId Int
+  id         Int        @id @default(autoincrement())
   lineItems  LineItem[]
 }
 
