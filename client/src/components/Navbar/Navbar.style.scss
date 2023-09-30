@@ -2,4 +2,56 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
+  position:sticky;
+  top:0;
+  background-color: #010101;
 }
+
+.navbar_logo {
+  margin-left: 50px;
+  width: 70px;
+}
+
+.sign_up {
+  margin: 10px;
+  padding: 10px;
+  font-family: Helvetica;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #ffffff;
+  border-radius: 20px;
+  border: 1px solid transparent;
+}
+
+.login {
+  margin: 10px;
+  padding: 10px;
+  margin-right: 40px;
+  font-family: Helvetica;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #ffffff;
+  border-radius: 20px;
+  border: 1px solid transparent;
+}
+
+.sign_up:hover {
+  background-color: #1f1f1f;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+}
+
+.login:hover {
+  background-color: #1f1f1f;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+}
+
+.navbar__account {
+  display: flex;
+  align-items: center;
+  margin-right: 50px;
+}
+
