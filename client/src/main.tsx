@@ -8,6 +8,7 @@ import {
   CreateProduct,
   Home,
   Login,
+  NotFound,
   Product,
   SignUp,
 } from "./pages";
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <div>404</div>,
+    element: <NotFound />,
   },
 ]);
 
