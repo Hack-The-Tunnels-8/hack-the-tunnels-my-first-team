@@ -65,3 +65,18 @@ export const update = async (
     return null; // Product not found or error occurred during update
   }
 };
+
+export const softDeleteProduct = async (id: string): Promise<Product | null> => {
+  try {
+    const product = await prisma.product.update({
+      where: { id: parseInt(id) },
+      data: {
+        deleted: true,
+      },
+    });
+
+    return product;
+  } catch (error) {
+    return null; // Product not found or error occurred during update
+  }
+};
