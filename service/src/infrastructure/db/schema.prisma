@@ -17,6 +17,7 @@ model Product {
   price       Float
   imageUrl    String?
   lineItems   LineItem[]
+  deleted     Boolean    @default(false)
 }
 
 model Order {
