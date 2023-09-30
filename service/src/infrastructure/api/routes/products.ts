@@ -6,6 +6,7 @@ import { success, error, verifyAuthorization } from "../utils";
 const router = express.Router();
 
 const getProducts = async (_: Request, response: Response) => {
+  const searchTerm = _.params.searchTerm;
   const products = await ProductService.all();
 
   return success(response, {
@@ -101,7 +102,7 @@ const updateProduct = async (request: Request, response: Response) => {
   }
 };
 
-router.get("/", getProducts);
+router.get("/:searchTerm", getProducts);
 router.get("/:id", getProduct);
 router.post("/", createProduct);
 router.put("/:id", updateProduct); // Add the new PUT endpoint for updating a product
